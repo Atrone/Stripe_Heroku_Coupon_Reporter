@@ -1,1 +1,1 @@
-worker: flask report send
+web: gunicorn run:app
