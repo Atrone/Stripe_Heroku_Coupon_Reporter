@@ -1,7 +1,6 @@
 from app import create_app
 from app.email_services import send_email
 
-
 # Create app
 app = create_app()
 
