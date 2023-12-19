@@ -7,7 +7,7 @@ import time
 def fetch_used_coupons():
     try:
         end = datetime.now()
-        start = end - timedelta(minutes=5)
+        start = end - timedelta(minutes=10)
 
         start_in_unix = int(time.mktime(start.timetuple()))
         end_in_unix = int(time.mktime(end.timetuple()))
