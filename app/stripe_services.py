@@ -26,7 +26,7 @@ def fetch_used_coupons():
         used_coupons = []
         for event in events.auto_paging_iter():
             coupon = event.data.object
-            if not coupon.valid and coupon.redeem_by >= start and coupon.redeem_by <= end:
+            if not coupon.valid and start <= coupon.redeem_by <= end:
                 used_coupons.append({
                     'id': coupon.id,
                     'timestamp': datetime.fromtimestamp(event.created).strftime('%Y-%m-%dT%H:%M:%SZ')
