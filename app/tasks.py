@@ -13,5 +13,5 @@ def send_report():
             return
         subject = "Used Coupons Report"
         sender = current_app.config['MAIL_USERNAME']
-        recipients = ["anthony.teixeira55@gmail.com"]
-        send_email(subject, sender, recipients, used_coupons)
+        recipients_data = {"anthony.teixeira55@gmail.com": "NASDAQ"}
+        send_email(subject, sender, recipients_data)
