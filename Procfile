@@ -1,1 +1,1 @@
-worker: flask report send
+worker: python -m flask report send
