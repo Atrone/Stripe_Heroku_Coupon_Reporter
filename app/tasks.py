@@ -9,6 +9,7 @@ def send_report():
     with current_app.app_context():
         used_coupons : List[Coupon] = fetch_used_coupons(window_of_minutes=10)
         if not used_coupons:
+            print('No Used Coupons')
             return
         subject = "Used Coupons Report"
         sender = current_app.config['MAIL_USERNAME']
