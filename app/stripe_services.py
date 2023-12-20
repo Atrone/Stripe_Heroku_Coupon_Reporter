@@ -1,8 +1,17 @@
+import dataclasses
+
 from flask import current_app
 from stripe.error import AuthenticationError
-import stripe 
+import stripe
 from datetime import datetime, timedelta
 import time
+
+
+@dataclasses.dataclass
+class Coupon:
+    id: str
+    timestamp: datetime
+
 
 def fetch_used_coupons(window_of_minutes=10):
     try:
@@ -27,13 +36,13 @@ def fetch_used_coupons(window_of_minutes=10):
         for event in events.auto_paging_iter():
             coupon = event.data.object
             if not coupon.valid and start <= coupon.redeem_by <= end:
-                used_coupons.append({
+                used_coupons.append(Coupon(**{
                     'id': coupon.id,
                     'timestamp': datetime.fromtimestamp(event.created).strftime('%Y-%m-%dT%H:%M:%SZ')
-                })
+                }))
 
         return used_coupons
     except AuthenticationError:
-        return {'error': 'Stripe API Key not found or invalid.'}
+        raise AuthenticationError('Stripe API Key not found or invalid')
     except Exception as e:
-        return {'error': str(e)}
+        raise Exception(str(e))
