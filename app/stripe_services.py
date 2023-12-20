@@ -4,10 +4,10 @@ import stripe
 from datetime import datetime, timedelta
 import time
 
-def fetch_used_coupons():
+def fetch_used_coupons(window_of_minutes=10):
     try:
         end = datetime.now()
-        start = end - timedelta(minutes=10)
+        start = end - timedelta(minutes=window_of_minutes)
 
         start_in_unix = int(time.mktime(start.timetuple()))
         end_in_unix = int(time.mktime(end.timetuple()))
