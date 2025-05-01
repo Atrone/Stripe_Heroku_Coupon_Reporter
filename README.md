@@ -1,4 +1,4 @@
-# Stripe_Heroku_Coupon_Reporter
+# Stripe_Heroku_Coupon_Reporter2
 
 ## Summary
 The software application named Stripe_Heroku_Coupon_Reporter fetches and reports on used Stripe coupons. Integrating with a Heroku backend, the application runs a job every 5 minutes which fetches any coupons used from the Stripe dashboard and generates an email report of these coupons, including information like the coupon's ID and when it was used. 
